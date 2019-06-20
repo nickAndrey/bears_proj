@@ -1,3 +1,35 @@
-<p>
-  delivery works!
-</p>
+<div class="container">
+	<form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+		<fieldset>
+			<legend>login form</legend>
+			<section class="form-group">
+				<label for="name">Name</label>
+				<input type="text" id="name" formControlName="name" class="form-control" />
+				<small class="form-text text-muted" *ngIf="validateLoginForm('name')">
+					Name is required.
+				</small>
+			</section>
+			<section class="form-group">
+				<label for="user-name">Username</label>
+				<input type="text" id="user-name" formControlName="user_name" class="form-control" />
+				<small class="form-text text-muted" *ngIf="validateLoginForm('user_name')">
+					Username is required.
+				</small>
+			</section>
+			<section class="form-group">
+				<label for="pwd">Password</label>
+				<input type="password" id="pwd" formControlName="password" class="form-control" />
+				<small class="form-text text-muted" *ngIf="validateLoginForm('password')">
+					Password is required.
+				</small>
+			</section>
+			<section class="form-group">
+				<button type="submit" class="btn btn-outline-secondary">
+					submit
+				</button>
+			</section>
+		</fieldset>
+	</form>
+
+	{{ form.value | json }}
+</div>
